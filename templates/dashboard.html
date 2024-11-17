@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Dashboard</h1>
+    <p>Hello, {{ current_user.user_name }}</p>
+    <a href="{{ url_for('add_product') }}">Add product</a>
+    <div>
+        <h3>My products</h3>
+        <div class="row">
+        {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <a href="{{ url_for('product_detail', id=product.id) }}"><img src="static/upload/{{ product.product_image }}" class="card-img-top" alt="..."></a>
+          <div class="card-body">
+              <a href="{{ url_for('product_detail', id=product.id) }}"><h5 class="card-title">{{ product.product_name }}</h5></a>
+              <p class="card-text">{{ product.product_desc }}</p>
+              <a href="#" class="btn btn-primary">{{ product.product_category }}</a>
+              <h5>{{ product.product_price }}</h5>
+              <a href="{{ url_for('product_update', id=product.id) }}">Update</a>
+              <a href="{{ url_for('product_remove', id=product.id) }}">Delete</a>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        </div>
+{% endblock %}

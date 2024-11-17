@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Main page</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam repudiandae tempore ut.</p>
+
+    <form action="{{ url_for('product_search') }}" method="post">
+        <input type="text" name="search" placeholder="Search" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="row">
+    {% for product in products %}
+    <div class="card" style="width: 18rem;">
+        <a href="{{ url_for('product_detail', id=product.id) }}"><img src="static/upload/{{ product.product_image }}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+          <a href="{{ url_for('product_detail', id=product.id) }}"><h5 class="card-title">{{ product.product_name }}</h5></a>
+        <p class="card-text">{{ product.product_desc }}</p>
+        <a href="#" class="btn btn-primary">{{ product.product_category }}</a>
+          <h5>{{ product.product_price }}</h5>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}

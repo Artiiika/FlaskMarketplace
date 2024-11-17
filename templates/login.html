@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Login</h1>
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.user_email(size=40) }}
+    {{ form.user_password(size=40) }}
+    <button type="submit">Reg</button>
+</form>
+
+{% endblock %}

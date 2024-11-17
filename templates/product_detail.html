@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>{{ product.product_name }}</h1>
+    <img src="../static/upload/{{ product.product_image }}" alt="No image">
+    <p>{{ product.product_category }}</p>
+    <p>{{ product.product_desc }}</p>
+    <p>{{ product.product_price }}</p>
+{% endblock %}

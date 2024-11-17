@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Update product: {{ product.product_name }}</h1>
+    <form method="post" enctype="multipart/form-data" class="form col-3">
+        {{ form.hidden_tag() }}
+        <p class="form-control">{{ form.product_name }}</p>
+        <p class="form-control">{{ form.product_desc }}</p>
+        <p class="form-control">{{ form.product_price }}</p>
+        <p class="form-control">{{ form.product_img }}</p>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">Back</a>
+{% endblock %}
