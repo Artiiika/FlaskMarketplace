@@ -1,6 +1,3 @@
-from fileinput import filename
-from itertools import product
-
 from flask import Flask, render_template, redirect, url_for, request
 from forms.forms import RegForm, LogForm, ProductForm
 from db_work.db_con import User, db, Product
@@ -9,7 +6,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'kfmdklsmvksfk'
+app.config['SECRET_KEY'] = os.getenv('FLASK_SK')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 UPLOAD_FOLDER = 'static/upload'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
