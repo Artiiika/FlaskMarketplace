@@ -19,3 +19,6 @@ class ProductForm(FlaskForm):
     product_desc = TextAreaField('Description')
     product_price = FloatField('Price')
     product_img = FileField('Photo')
+
+class SearchForm(FlaskForm):
+    search = StringField('Search')

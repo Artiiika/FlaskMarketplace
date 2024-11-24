@@ -1,10 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request
-from forms.forms import RegForm, LogForm, ProductForm
+from forms.forms import RegForm, LogForm, ProductForm, SearchForm
 from db_work.db_con import User, db, Product
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 import os
+from dotenv import load_dotenv
 
-
+load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('FLASK_SK')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -25,8 +26,9 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+    form = SearchForm()
     all_products = Product.query.all()
-    return render_template('index.html', products=all_products)
+    return render_template('index.html', products=all_products, form=form)
 
 
 @app.route('/about')
